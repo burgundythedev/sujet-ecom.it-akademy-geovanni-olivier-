@@ -1,15 +1,17 @@
 <?php
 
-/*function addUser($pdo, $data){
+function addUser($pdo, $data){
 
-    $firstname =$data['firstname'];
-    $lastname =$data['lastname'];
+    $firstname =$data['first_name'];
+    $lastname =$data['last_name'];
     $email =$data['email'];
+    $password = $data['password'];
+    $phone = $data['phone'];
 
 
     $sql = "
-        INSERT INTO user (first_name,last_name, email)
-        VALUES ( :firstname, :lastname, :email)
+        INSERT INTO client (first_name,last_name, email, password, phone)
+        VALUES ( :first_name, :last_name, :email, :password, :phone)
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -18,11 +20,14 @@
         return $stmt->execute(
 
             [
-                "firstname" => $firstname,
-                "lastname" => $lastname,
-                "email" => $email
+                "first_name" => $firstname,
+                "last_name" => $lastname,
+                "email" => $email,
+                "password" => $password,
+                "phone" => $phone
             ]
-            );
+        );
+
     } catch (Exception $e) {
 
         $pdo->rollBack();
@@ -32,7 +37,7 @@
     }
 }
 
-
+/*
 
 
 function getAllUser($pdo) {
@@ -84,4 +89,6 @@ function getUser($pdo, $id) {
 
 function deleteUser () {
     
-}*/
+}
+*/
+?>

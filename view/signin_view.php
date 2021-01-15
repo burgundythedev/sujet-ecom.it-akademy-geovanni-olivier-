@@ -1,4 +1,4 @@
-<h1>Formulaire d'inscrption</h1>
+<h1>Login</h1>
 
 <form action="signin" method="post" >
 
