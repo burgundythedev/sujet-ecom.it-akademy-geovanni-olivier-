@@ -1,15 +1,13 @@
-<h1>Formulaire d'inscrption</h1>
+<h1>Login</h1>
 
 <form action="signin" method="post" >
 
-    <label for="firstname">First Name:</label>
-    <input id="firstname" name="firstname" type="text">
-
-    <label for="lastname">Last Name:</label>
-    <input id="lastname" name="lastname" type="text">
-
     <label for="email">Email:</label>
     <input id="email" name="email" type="text">
+    <br>
+    <br>
+    <label for="password">Password:</label>
+    <input id="pwd" name="password" type="text">
 
-    <button type="submit">Submit</button>
+    <button type="submit" name= "connection">Submit</button>
 </form>

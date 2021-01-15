@@ -10,12 +10,15 @@ $slug =  explode('?', $_SERVER['REQUEST_URI'])[0];
 // Router
 switch ($slug) {
     // url
-    case "/boilerplate-it-akademy-master/":
+    case "/sujet-ecom.it-akademy-geovanni-olivier-/":
         include '../controller/home_controller.php';
         break;
-    case '/boilerplate-it-akademy-master/signin':
+    case '/sujet-ecom.it-akademy-geovanni-olivier-/signin':
         include '../controller/signin_controller.php';
         break;
+    case '/sujet-ecom.it-akademy-geovanni-olivier-/register':
+            include '../controller/register_controller.php';
+            break;
     default:
         include "../controller/404_controller.php";
         break;

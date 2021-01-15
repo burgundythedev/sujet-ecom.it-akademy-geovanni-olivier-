@@ -1,6 +1,6 @@
 <?php
 
-/*function addUser($pdo, $data){
+function addUser($pdo, $data){
 
     $firstname =$data['firstname'];
     $lastname =$data['lastname'];
@@ -59,12 +59,16 @@ function getAllUser($pdo) {
 
 
 
-function getUser($pdo, $id) {
+function getUser($pdo, $data) {
+
+    $email =$data['email'];
+    $password =$data['password'];
+
 
     $sql = "
         SELECT *
         FROM user
-        WHERE id = $id;
+        WHERE email = $email AND password = $password;
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -84,4 +88,4 @@ function getUser($pdo, $id) {
 
 function deleteUser () {
     
-}*/
+}
