@@ -1,15 +1,18 @@
 <?php
 
+session_start();
+
 function addUser($pdo, $data){
 
-    $firstname =$data['firstname'];
-    $lastname =$data['lastname'];
+    $firstname =$data['first_name'];
+    $lastname =$data['last_name'];
     $email =$data['email'];
-
+    $password = $data['password'];
+    $phone = $data['phone'];
 
     $sql = "
-        INSERT INTO user (first_name,last_name, email)
-        VALUES ( :firstname, :lastname, :email)
+        INSERT INTO client (first_name,last_name, email, password, phone)
+        VALUES ( :firs_tname, :last_name, :email, :password, :phone)
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -20,7 +23,9 @@ function addUser($pdo, $data){
             [
                 "firstname" => $firstname,
                 "lastname" => $lastname,
-                "email" => $email
+                "email" => $email,
+                "password" => $password,
+                "phone" => $phone
             ]
             );
     } catch (Exception $e) {
@@ -58,24 +63,27 @@ function getAllUser($pdo) {
 }
 
 
+function getUserId($pdo) {
 
-function getUser($pdo, $data) {
-
-    $email =$data['email'];
-    $password =$data['password'];
-
+    $getid = intval($_GET['id']); // intval retourne la valeur entière de la variable
 
     $sql = "
         SELECT *
         FROM user
-        WHERE email = $email AND password = $password;
+        WHERE id = ?
     ";
 
     $stmt = $pdo->prepare($sql);
 
     try {
 
-         $stmt->execute();
+         $stmt->execute(array($getid));
+         $clientInfo = $stmt -> fetch();
+
+         $_SESSION ['first_name']= $clientInfo ['first_name'];
+         $_SESSION ['last_name']= $clientInfo ['last_name'];
+         $_SESSION ['email']= $clientInfo ['email'];
+         $_SESSION ['phone']= $clientInfo ['phone'];
 
     } catch (Exception $e) {
 
@@ -86,6 +94,42 @@ function getUser($pdo, $data) {
 }
 
 
-function deleteUser () {
-    
+function getUser($pdo, $data) {
+
+    $email =$data['email'];
+    $password =$data['password'];
+
+
+    $sql = "
+        SELECT *
+        FROM client
+        WHERE email = $email AND password = $password;
+    ";
+
+    $stmt = $pdo->prepare($sql);
+
+    try {
+
+         $stmt->execute(array ($email, $password));
+         
+         $clientInfo = $stmt -> fetch();
+
+         $_SESSION ['first_name']= $clientInfo ['first_name'];
+         $_SESSION ['last_name']= $clientInfo ['last_name'];
+         $_SESSION ['email']= $clientInfo ['email'];
+         $_SESSION ['phone']= $clientInfo ['phone'];
+
+
+
+    } catch (Exception $e) {
+
+        $pdo->rollBack();
+
+        throw $e;
+    }
+}
+
+
+function deleteUser (){
+
 }
