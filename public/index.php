@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Database connection : $pdo
 include_once '../pdo_connection.php';
 
@@ -21,6 +22,9 @@ switch ($slug) {
         break;
     case '/sujet-ecom.it-akademy-geovanni-olivier-/aftregisterlogin':
         include '../controller/aftregisterlogin_controller.php';
+        break;
+    case '/sujet-ecom.it-akademy-geovanni-olivier-/profile':
+        include '../controller/profile_controller.php';
         break;
     default:
         include "../controller/404_controller.php";

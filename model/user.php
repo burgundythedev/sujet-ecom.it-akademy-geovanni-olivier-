@@ -64,19 +64,62 @@ function getAllUser($pdo) {
 
 
 
-function getUser($pdo, $id) {
+function getUser($pdo, $data) {
+
+    $email =$data['email'];
+    $password =$data['password'];
+
 
     $sql = "
         SELECT *
-        FROM user
-        WHERE id = $id;
+        FROM client
+        WHERE email = $email AND password = $password;
     ";
 
     $stmt = $pdo->prepare($sql);
 
     try {
 
-         $stmt->execute();
+         $stmt->execute(array ($email, $password));
+         
+         $clientInfo = $stmt -> fetch();
+
+         $_SESSION ['first_name']= $clientInfo ['first_name'];
+         $_SESSION ['last_name']= $clientInfo ['last_name'];
+         $_SESSION ['email']= $clientInfo ['email'];
+         $_SESSION ['phone']= $clientInfo ['phone'];
+
+
+
+    } catch (Exception $e) {
+
+        $pdo->rollBack();
+
+        throw $e;
+    }
+}
+
+function getUserId($pdo) {
+
+    $getid = intval($_GET['id']); // intval retourne la valeur entière de la variable
+
+    $sql = "
+        SELECT *
+        FROM user
+        WHERE id = ?
+    ";
+
+    $stmt = $pdo->prepare($sql);
+
+    try {
+
+         $stmt->execute(array($getid));
+         $clientInfo = $stmt -> fetch();
+
+         $_SESSION ['first_name']= $clientInfo ['first_name'];
+         $_SESSION ['last_name']= $clientInfo ['last_name'];
+         $_SESSION ['email']= $clientInfo ['email'];
+         $_SESSION ['phone']= $clientInfo ['phone'];
 
     } catch (Exception $e) {
 

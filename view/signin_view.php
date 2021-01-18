@@ -6,9 +6,8 @@
     <input id="email" name="email" type="text">
     <br>
     <br>
-    <label for="pass">Password:</label>
-    <input type="password" id="pass" name="password" required>
-    <br>
-    <br>
-    <button type="submit">Submit</button>
+    <label for="password">Password:</label>
+    <input id="pwd" name="password" type="text">
+
+    <button type="submit" name= "connection">Submit</button>
 </form>
