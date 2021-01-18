@@ -2,8 +2,8 @@
 
 include '../model/user.php';
 
-if(isset($_POST['firstname'])) {
-    addUser($pdo, $_POST);
-    session_start();
+if(isset($_POST['email'])) {
+    getUser($pdo,$id);
+   
 }
 include '../view/signin_view.php';

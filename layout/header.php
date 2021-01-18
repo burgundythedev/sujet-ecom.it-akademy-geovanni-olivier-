@@ -14,6 +14,5 @@
         <li><a href="/sujet-ecom.it-akademy-geovanni-olivier-/">Home</a></li>
         <li><a href="register">Register</a></li>
         <li><a href="signin">Sign In</a></li>
-
     </ul>
 </nav>

@@ -19,6 +19,9 @@ switch ($slug) {
     case '/sujet-ecom.it-akademy-geovanni-olivier-/signin':
         include '../controller/signin_controller.php';
         break;
+    case '/sujet-ecom.it-akademy-geovanni-olivier-/aftregisterlogin':
+        include '../controller/aftregisterlogin_controller.php';
+        break;
     default:
         include "../controller/404_controller.php";
         break;

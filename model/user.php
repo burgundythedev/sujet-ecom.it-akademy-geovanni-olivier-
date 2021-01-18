@@ -37,7 +37,7 @@ function addUser($pdo, $data){
     }
 }
 
-/*
+
 
 
 function getAllUser($pdo) {
@@ -90,5 +90,5 @@ function getUser($pdo, $id) {
 function deleteUser () {
     
 }
-*/
+
 ?>
