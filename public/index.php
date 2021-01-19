@@ -26,6 +26,12 @@ switch ($slug) {
     case '/sujet-ecom.it-akademy-geovanni-olivier-/profile':
         include '../controller/profile_controller.php';
         break;
+    case '/sujet-ecom.it-akademy-geovanni-olivier-/signout':
+        include '../controller/signin_controller.php';
+        break;
+    case '/sujet-ecom.it-akademy-geovanni-olivier-/shop':
+        include '../controller/shop_controller.php';
+        break;
     default:
         include "../controller/404_controller.php";
         break;
