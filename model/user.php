@@ -1,5 +1,7 @@
 <?php
-function addUser($pdo, $data){
+
+// function pour register/login:
+function addUser($pdo, $data) {
 
     $firstname =$data['first_name'];
     $lastname =$data['last_name'];
@@ -36,30 +38,6 @@ function addUser($pdo, $data){
     }
 }
 
-function getAllUser($pdo) {
-
-    $sql = "
-        SELECT *
-        FROM user;
-    ";
-
-    $stmt = $pdo->prepare($sql);
-
-    try {
-
-         $stmt->execute();
-
-    } catch (Exception $e) {
-
-        $pdo->rollBack();
-
-        throw $e;
-
-    }
-}
-
-
-
 function getUser($pdo, $data) {
 
     $email =$data['email'];
@@ -92,8 +70,90 @@ function getUser($pdo, $data) {
 
 
 
-function deleteUser () {
-    
+// #####################function pour produit/panier:
+
+
+function addItem($pdo, $data) {
+
+    $idItem = $data['id_item'];
+    $quantity = $data['quantity'];
+
+
+
+    $sql = "
+        INSERT INTO content-order (id_item, quantity)
+        VALUES ( :id_item, :quantity)
+    ";
+
+    $stmt = $pdo->prepare($sql);
+
+    try {
+        return $stmt->execute(
+
+            [
+                "id_item" => $idItem,
+                "quantity" => $quantity
+
+            ]
+        );
+
+    } catch (Exception $e) {
+
+        $pdo->rollBack();
+
+        throw $e;
+
+    }
 }
+
+function getItem($pdo, $data) {
+
+
+    $sql = "
+        SELECT *
+        FROM item
+        WHERE id = :id;
+    ";
+
+    $stmt = $pdo->prepare($sql);
+
+    try {
+
+         $stmt->execute(array ("id"=> $id));
+         
+         $product = $stmt -> fetch();
+
+        return $product;
+        
+    } catch (Exception $e) {
+
+        $pdo->rollBack();
+
+        throw $e;
+    }
+}
+
+// function getAllUser($pdo) {
+
+//     $sql = "
+//         SELECT *
+//         FROM user;
+//     ";
+
+//     $stmt = $pdo->prepare($sql);
+
+//     try {
+
+//          $stmt->execute();
+
+//     } catch (Exception $e) {
+
+//         $pdo->rollBack();
+
+//         throw $e;
+
+//     }
+// }
+
 
 ?>

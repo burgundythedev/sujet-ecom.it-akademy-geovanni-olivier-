@@ -1,4 +1,4 @@
-<div class="shop">
+<form class="shop" action="shop" method= "post" >
     <div class="product-details">
         <img src=
         "https://www.valoisvintage-paris.com/13932-81315-large_default/serviette-de-plage-chanel-bleu-marine-logo-cc.jpg" 
@@ -6,7 +6,7 @@
         alt="serviette" />
         <p class="legend">La Serviette</p>
         <p class="price">Prix: 20 euros</p>
-        <button class="btn" name="action">Ajouter au panier</button>
+        <button type="submit" name="add">Ajouter au panier</button>
     </div>
         <br>
     <div class="product">
@@ -16,7 +16,7 @@
         alt="futa" />
         <p class="legend">La Futa</p>
         <p class="price">Prix: 30 euros</p>
-        <button class="btn" name="action">Ajouter au panier</button>
+        <button type="submit"  name="add">Ajouter au panier</button>
     </div>
         <br>
     <div class="product">
@@ -25,8 +25,7 @@
         alt="peignoir" />
         <p class="legend">Le Peignoir</p>
         <p class="price">Prix: 40 euros</p>
-        <button class="btn" name="action">Ajouter au panier</button>
-        <br>
+        <button type="submit"  name="add">Ajouter au panier</button>
     </div>
         <br>
     <div class="product">
@@ -36,7 +35,7 @@
         alt="mrcl" />
         <p class="legend">Le Marcel</p>
         <p class="price">Prix: 15 euros</p>
-        <button class="btn" name="action">Ajouter au panier</button>
+        <button type="submit"  name="add">Ajouter au panier</button>
     </div>
         <br>
     <div class="product">
@@ -46,7 +45,7 @@
         alt="mdb" />
         <p class="legend">Le Maillot de bain</p>
         <p class="price">Prix: 80 euros</p>
-        <button class="btn" name="action">Ajouter au panier</button>
+        <button type="submit"  name="add">Ajouter au panier</button>
     </div>
 </div>
 
