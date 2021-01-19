@@ -1,21 +1,14 @@
-
+<?php
+if(isset($_SESSION['email'])) {
+     echo 'Profil de '.$_SESSION['first_name']." ".$_SESSION['last_name']." <br><br>";
+     echo 'Téléphone: '.$_SESSION['phone']." <br><br>";
+     echo 'E-mail: '.$_SESSION['email']." <br><br>";
+}
+?>
     <div>
-         <h2>Profil de <?php echo $clientinfo['last_name']; ?></h2>
-         <br /><br />
-         Fisrtname = <?php echo $clientinfo['fisrt_name']; ?>
-         <br />
-         Mail = <?php echo $clientinfo['mail']; ?>
-         <br />
-         Tel = <?php echo $clientinfo['phone']; ?>
-         <br />
-         <?php
-         if(isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']) {
-         ?>
-         <br />
          <a href="edit_profile.php">Modifier votre profil</a>
+         <br>
+         <br>
          <a href="signout.php">Se déconnecter</a>
-         <?php
-         }
-         ?>
-     </div>
+    </div>
      

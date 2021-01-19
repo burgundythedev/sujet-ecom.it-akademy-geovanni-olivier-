@@ -1,5 +1,4 @@
 <?php
-
 function addUser($pdo, $data){
 
     $firstname =$data['first_name'];
@@ -37,9 +36,6 @@ function addUser($pdo, $data){
     }
 }
 
-
-
-
 function getAllUser($pdo) {
 
     $sql = "
@@ -73,24 +69,19 @@ function getUser($pdo, $data) {
     $sql = "
         SELECT *
         FROM client
-        WHERE email = $email AND password = $password;
+        WHERE email = :email AND password = :password;
     ";
 
     $stmt = $pdo->prepare($sql);
 
     try {
 
-         $stmt->execute(array ($email, $password));
+         $stmt->execute(array ("email"=> $email, "password"=> $password));
          
          $clientInfo = $stmt -> fetch();
 
-         $_SESSION ['first_name']= $clientInfo ['first_name'];
-         $_SESSION ['last_name']= $clientInfo ['last_name'];
-         $_SESSION ['email']= $clientInfo ['email'];
-         $_SESSION ['phone']= $clientInfo ['phone'];
-
-
-
+        return $clientInfo;
+        
     } catch (Exception $e) {
 
         $pdo->rollBack();
@@ -99,35 +90,35 @@ function getUser($pdo, $data) {
     }
 }
 
-function getUserId($pdo) {
+// function getUserId($pdo) {
 
-    $getid = intval($_GET['id']); // intval retourne la valeur entière de la variable
+//     $getid = intval($_GET['id']); // intval retourne la valeur entière de la variable
 
-    $sql = "
-        SELECT *
-        FROM user
-        WHERE id = ?
-    ";
+//     $sql = "
+//         SELECT *
+//         FROM user
+//         WHERE id = ?
+//     ";
 
-    $stmt = $pdo->prepare($sql);
+//     $stmt = $pdo->prepare($sql);
 
-    try {
+//     try {
 
-         $stmt->execute(array($getid));
-         $clientInfo = $stmt -> fetch();
+//          $stmt->execute(array($getid));
+//          $clientInfo = $stmt -> fetch();
 
-         $_SESSION ['first_name']= $clientInfo ['first_name'];
-         $_SESSION ['last_name']= $clientInfo ['last_name'];
-         $_SESSION ['email']= $clientInfo ['email'];
-         $_SESSION ['phone']= $clientInfo ['phone'];
+//          $_SESSION ['first_name']= $clientInfo ['first_name'];
+//          $_SESSION ['last_name']= $clientInfo ['last_name'];
+//          $_SESSION ['email']= $clientInfo ['email'];
+//          $_SESSION ['phone']= $clientInfo ['phone'];
 
-    } catch (Exception $e) {
+//     } catch (Exception $e) {
 
-        $pdo->rollBack();
+//         $pdo->rollBack();
 
-        throw $e;
-    }
-}
+//         throw $e;
+//     }
+// }
 
 
 function deleteUser () {
