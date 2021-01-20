@@ -22,7 +22,7 @@ session_start();
 </nav>
 
 
-<!-- <style> 
+<style> 
     ul  {
         display: flex;
         flex-direction: row;
@@ -32,4 +32,4 @@ session_start();
     li {
         margin: 15px;
     }
-</style> -->
+</style>
