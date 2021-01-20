@@ -11,3 +11,18 @@
 
     <button type="submit" name= "connection">Submit</button>
 </form>
+
+<style>
+    h1 {
+        text-align : center;
+    }
+
+    form {
+        display:flex;
+        justify-content: center;
+    }
+
+    label {
+        margin : 15px;
+    }
+</style>

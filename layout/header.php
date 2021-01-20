@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,3 +20,16 @@
         <li><a href="shop">Shop G&O</a></li>
     </ul>
 </nav>
+
+
+<!-- <style> 
+    ul  {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    li {
+        margin: 15px;
+    }
+</style> -->

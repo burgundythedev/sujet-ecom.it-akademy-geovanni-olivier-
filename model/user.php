@@ -6,7 +6,7 @@ function addUser($pdo, $data) {
     $firstname =$data['first_name'];
     $lastname =$data['last_name'];
     $email =$data['email'];
-    $password = $data['password'];
+    $password = sha1($data ['password']);
     $phone = $data['phone'];
 
 
@@ -41,7 +41,7 @@ function addUser($pdo, $data) {
 function getUser($pdo, $data) {
 
     $email =$data['email'];
-    $password =$data['password'];
+    $password = sha1($data ['password']);
 
 
     $sql = "
@@ -68,21 +68,13 @@ function getUser($pdo, $data) {
     }
 }
 
-
-
-// #####################function pour produit/panier:
-
-
-function addItem($pdo, $data) {
-
-    $idItem = $data['id_item'];
-    $quantity = $data['quantity'];
-
-
+function addOrder ($pdo, $id) {
+    
+    $id = $_SESSION['id'];
 
     $sql = "
-        INSERT INTO content-order (id_item, quantity)
-        VALUES ( :id_item, :quantity)
+        INSERT INTO `order` (id_client,paid)
+        VALUES (:id_client, :paid)
     ";
 
     $stmt = $pdo->prepare($sql);
@@ -91,9 +83,8 @@ function addItem($pdo, $data) {
         return $stmt->execute(
 
             [
-                "id_item" => $idItem,
-                "quantity" => $quantity
-
+                "id_client" => $id,
+                "paid" => 0
             ]
         );
 
@@ -106,32 +97,36 @@ function addItem($pdo, $data) {
     }
 }
 
-function getItem($pdo, $data) {
+function getItem ($pdo, $data) {
 
+    $data = $_POST['add'];
 
-    $sql = "
-        SELECT *
-        FROM item
-        WHERE id = :id;
+    $sql ="
+    
+    INSERT INTO content-order (id_item, quantity)
+    VALUES (:id_item, :quantity)
+
     ";
 
     $stmt = $pdo->prepare($sql);
 
     try {
+        $stmt->execute(
 
-         $stmt->execute(array ("id"=> $id));
-         
-         $product = $stmt -> fetch();
-
-        return $product;
+            [
+                "id_item" => $data,
+                "quantity" => 0
+            ]
+        );
         
     } catch (Exception $e) {
-
         $pdo->rollBack();
-
         throw $e;
     }
 }
+
+
+
 
 // function getAllUser($pdo) {
 

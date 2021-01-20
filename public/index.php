@@ -1,5 +1,4 @@
 <?php
-session_start();
 // Database connection : $pdo
 include_once '../pdo_connection.php';
 
